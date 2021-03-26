@@ -34,3 +34,9 @@ function dateToUnix(){
     var unix = new Date(year,month,day,time[0],time[1],time[2]);
     document.getElementById("unixTime").value = unix.getTime()/1000;
 }
+
+function todayDate(){
+    date = new Date()
+    document.getElementById("unixTime").value = date.getTime()/1000;
+    unixToDate()
+}
