@@ -4,6 +4,12 @@ function unixToDate(){
     if (isNaN(x)){
         return
     }
+    numDivided = 0
+    while (unixTime > 10000000000){
+        unixTime /= 1000;
+        numDivided++;
+    }
+    const prefixes = ["", "milli", "micro", "nano"];
     var a = new Date(unixTime * 1000);
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     document.getElementById("year").value = a.getFullYear();
@@ -22,6 +28,10 @@ function unixToDate(){
         sec = "0" + sec
     }
     time = hour + ':' + min + ':' + sec;
+    if (numDivided < prefixes.length){
+        console.log(numDivided)
+        document.getElementById("assumption").innerText = "Assuming input is in " + prefixes[numDivided] + "seconds."
+    }
     document.getElementById("time").value = time;
 }
 
@@ -33,6 +43,7 @@ function dateToUnix(){
     time = time.split(":")
     var unix = new Date(year,month,day,time[0],time[1],time[2]);
     document.getElementById("unixTime").value = unix.getTime()/1000;
+    unixToDate();
 }
 
 function todayDate(){

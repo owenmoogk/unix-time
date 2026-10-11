@@ -14,14 +14,11 @@
     <div id="main">
         <p id="title">UNIX Time Converter</p>
         <p>All the other websites I used for this weren't great, so I decided to make my own.</p>
-        <div id="unix">
-            <input type="text" id="unixTime">
-            <button onclick="unixToDate()">Go!</button>
-            <button onclick="todayDate()">Now</button>
-        </div>
+        <input type="text" id="unixTime" oninput="unixToDate()">
+        <p id="assumption"></p>
         <br><br>
         <div id="date">
-            <select name="month" id="month">
+            <select name="month" id="month" oninput="dateToUnix()">
                 <option value="0">Jan</option>
                 <option value="1">Feb</option>
                 <option value="2">Mar</option>
@@ -35,17 +32,17 @@
                 <option value="10">Nov</option>
                 <option value="11">Dec</option>
             </select>
-            <input type="number" id="day" style="width: 50px;" min="1" max="31" required>
-            <input type="number" id="year" max="9999" min="0" required>
-            <input type="time" id="time" required step="1">
-            <button onclick="dateToUnix()">Submit
-            </button>
+            <input type="number" id="day" style="width: 50px;" min="1" max="31" required oninput="dateToUnix()">
+            <input type="number" id="year" max="9999" min="0" required oninput="dateToUnix()">
+            <input type="time" id="time" required step="1" oninput="dateToUnix()">
         </div>
-        <br><br>
+                    <button onclick="todayDate()">Now</button>
+
         <div id="table">
+            <br><br>
             <table>
                 <tr>
-                    <th>Human Time</th>
+                    <th>Time</th>
                     <th>Seconds</th>
                 </tr>
                 <tr>
